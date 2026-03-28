@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keo Co Tri Thuc</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="ambient ambient-blue" aria-hidden="true"></div>
+    <div class="ambient ambient-red" aria-hidden="true"></div>
+
+    <div class="page-shell">
+      <header class="topbar panel reveal">
+        <div class="brand-block">
+          <p class="brand-kicker">Tro choi tuong tac</p>
+          <h1>Keo Co Tri Thuc</h1>
+        </div>
+
+        <div class="score-pill score-pill-blue">
+          <span class="team-dot"></span>
+          <span class="score-name" id="blueNameLabel">Đội Xanh</span>
+          <strong class="score-value" id="blueScoreLabel">0</strong>
+        </div>
+
+        <div class="timer-pill">
+          <span class="timer-icon">⏱</span>
+          <strong id="timerLabel">01:00</strong>
+        </div>
+
+        <div class="score-pill score-pill-red">
+          <strong class="score-value" id="redScoreLabel">0</strong>
+          <span class="score-name" id="redNameLabel">Đội Đỏ</span>
+          <span class="team-dot"></span>
+        </div>
+
+        <div class="header-actions">
+          <button class="ghost-btn" id="muteBtn" type="button">Tắt Âm</button>
+          <button class="ghost-btn" id="fullscreenBtn" type="button">Toàn Màn Hình</button>
+          <button class="ghost-btn" id="exitBtn" type="button">Thoát</button>
+        </div>
+      </header>
+
+      <main class="game-grid">
+        <section class="team-panel team-panel-blue panel reveal">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Bang câu hỏi</p>
+              <h2 id="bluePanelTitle">Đội Xanh</h2>
+            </div>
+            <span class="turn-chip" id="blueTurnChip">Chờ lượt</span>
+          </div>
+
+          <div class="card-stack">
+            <button class="question-card question-card-large" data-card-slot="blue-0" type="button"></button>
+            <div class="question-row">
+              <button class="question-card" data-card-slot="blue-1" type="button"></button>
+              <button class="question-card" data-card-slot="blue-2" type="button"></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="arena-panel panel reveal">
+          <div class="arena-head">
+            <span class="status-badge" id="turnLabel">Lượt Đội Xanh</span>
+            <span class="status-badge status-badge-neutral" id="resultLabel">Trả lời đúng để kéo dây về phía mình.</span>
+          </div>
+
+          <div class="arena-stage">
+            <div class="center-mark" aria-hidden="true"></div>
+            <div class="arena-glow" aria-hidden="true"></div>
+
+            <div class="rope-cluster" id="ropeCluster">
+              <div class="squad squad-left" aria-hidden="true">
+                <div class="player player-blue left">
+                  <span class="player-hair"></span>
+                  <span class="player-head"></span>
+                  <span class="player-body"></span>
+                  <span class="player-arm"></span>
+                  <span class="player-arm back"></span>
+                  <span class="player-leg"></span>
+                  <span class="player-leg back"></span>
+                </div>
+                <div class="player player-blue left alt">
+                  <span class="player-hair"></span>
+                  <span class="player-head"></span>
+                  <span class="player-body"></span>
+                  <span class="player-arm"></span>
+                  <span class="player-arm back"></span>
+                  <span class="player-leg"></span>
+                  <span class="player-leg back"></span>
+                </div>
+                <div class="player player-blue left">
+                  <span class="player-hair"></span>
+                  <span class="player-head"></span>
+                  <span class="player-body"></span>
+                  <span class="player-arm"></span>
+                  <span class="player-arm back"></span>
+                  <span class="player-leg"></span>
+                  <span class="player-leg back"></span>
+                </div>
+              </div>
+
+              <div class="rope-span" aria-hidden="true">
+                <span class="rope-knot"></span>
+              </div>
+
+              <div class="squad squad-right" aria-hidden="true">
+                <div class="player player-red right">
+                  <span class="player-hair"></span>
+                  <span class="player-head"></span>
+                  <span class="player-body"></span>
+                  <span class="player-arm"></span>
+                  <span class="player-arm back"></span>
+                  <span class="player-leg"></span>
+                  <span class="player-leg back"></span>
+                </div>
+                <div class="player player-red right alt">
+                  <span class="player-hair"></span>
+                  <span class="player-head"></span>
+                  <span class="player-body"></span>
+                  <span class="player-arm"></span>
+                  <span class="player-arm back"></span>
+                  <span class="player-leg"></span>
+                  <span class="player-leg back"></span>
+                </div>
+                <div class="player player-red right">
+                  <span class="player-hair"></span>
+                  <span class="player-head"></span>
+                  <span class="player-body"></span>
+                  <span class="player-arm"></span>
+                  <span class="player-arm back"></span>
+                  <span class="player-leg"></span>
+                  <span class="player-leg back"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arena-footer">
+            <div class="arena-meta">
+              <span id="pullMeta">Thế kéo cân bằng</span>
+              <span id="cardsMeta">6 ô chưa mở</span>
+            </div>
+
+            <div class="pull-meter">
+              <div class="pull-meter-track">
+                <div class="pull-meter-center" aria-hidden="true"></div>
+                <div class="pull-meter-indicator" id="pullMeterIndicator" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="team-panel team-panel-red panel reveal">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Bang câu hỏi</p>
+              <h2 id="redPanelTitle">Đội Đỏ</h2>
+            </div>
+            <span class="turn-chip" id="redTurnChip">Chờ lượt</span>
+          </div>
+
+          <div class="card-stack">
+            <button class="question-card question-card-large" data-card-slot="red-0" type="button"></button>
+            <div class="question-row">
+              <button class="question-card" data-card-slot="red-1" type="button"></button>
+              <button class="question-card" data-card-slot="red-2" type="button"></button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <section class="overlay-shell" id="setupOverlay">
+      <div class="overlay-backdrop"></div>
+      <div class="overlay-card panel">
+        <p class="brand-kicker">Keo co tri thuc</p>
+        <h2>Tạo trận đấu mới</h2>
+        <p class="overlay-copy">
+          Giao diện được dựng theo cảm hứng từ ảnh bạn gửi và trang mẫu
+          <a href="https://giaoviendoimoi.com/tug-of-war-game" target="_blank" rel="noreferrer">giaoviendoimoi.com/tug-of-war-game</a>.
+          Bạn chỉ cần đặt tên hai đội, chọn thời gian và bộ câu hỏi rồi bấm bắt đầu.
+        </p>
+
+        <div class="setup-grid">
+          <label class="field">
+            <span>Tên đội xanh</span>
+            <input id="blueNameInput" maxlength="24" type="text" value="Đội Xanh" />
+          </label>
+
+          <label class="field">
+            <span>Tên đội đỏ</span>
+            <input id="redNameInput" maxlength="24" type="text" value="Đội Đỏ" />
+          </label>
+
+          <label class="field">
+            <span>Thời gian (giây)</span>
+            <input id="durationInput" min="30" max="600" step="10" type="number" value="60" />
+          </label>
+
+          <label class="field">
+            <span>Bộ câu hỏi</span>
+            <select id="presetSelect"></select>
+          </label>
+        </div>
+
+        <div class="preset-preview" id="presetPreview"></div>
+
+        <div class="setup-actions">
+          <button class="primary-btn" id="startGameBtn" type="button">Bắt đầu trận đấu</button>
+          <button class="ghost-btn" hidden id="continueBtn" type="button">Tiếp tục trận đang dở</button>
+        </div>
+
+        <div class="rule-grid">
+          <article class="rule-card">
+            <h3>Luật kéo dây</h3>
+            <p>Trả lời đúng sẽ kéo dây từ 1 đến 3 bước tùy ô câu hỏi. Trả lời sai khiến đối thủ kéo lại 1 bước.</p>
+          </article>
+          <article class="rule-card">
+            <h3>Lượt chơi</h3>
+            <p>Hai đội luân phiên mở ô của chính mình. Ô lớn là câu hỏi khó hơn nên mang nhiều lợi thế hơn.</p>
+          </article>
+          <article class="rule-card">
+            <h3>Kết thúc</h3>
+            <p>Đội thắng là đội kéo dây về phía mình mạnh hơn hoặc có tổng điểm cao hơn khi hết giờ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="modal-shell" hidden id="questionModal">
+      <div class="modal-backdrop" data-close="question"></div>
+      <div class="modal-card panel">
+        <button aria-label="Đóng" class="close-btn" id="closeQuestionBtn" type="button">×</button>
+        <p class="modal-eyebrow" id="questionTeamLabel">Đội Xanh</p>
+        <h2 id="questionTitle">Câu hỏi</h2>
+        <p class="modal-question" id="questionText"></p>
+        <div class="answer-list" id="answerList"></div>
+        <p class="modal-note" id="questionNote">Chọn một đáp án để khóa câu trả lời.</p>
+      </div>
+    </section>
+
+    <section class="overlay-shell" hidden id="resultOverlay">
+      <div class="overlay-backdrop"></div>
+      <div class="overlay-card panel result-card">
+        <p class="brand-kicker">Kết quả trận đấu</p>
+        <h2 id="winnerHeadline">Đội Xanh chiến thắng</h2>
+        <p class="overlay-copy" id="winnerSummary"></p>
+
+        <div class="result-stats">
+          <div class="result-stat">
+            <span class="result-label">Điểm đội xanh</span>
+            <strong id="blueResultScore">0</strong>
+          </div>
+          <div class="result-stat">
+            <span class="result-label">Điểm đội đỏ</span>
+            <strong id="redResultScore">0</strong>
+          </div>
+          <div class="result-stat">
+            <span class="result-label">Thế kéo cuối</span>
+            <strong id="resultPullLabel">Cân bằng</strong>
+          </div>
+        </div>
+
+        <div class="setup-actions">
+          <button class="primary-btn" id="playAgainBtn" type="button">Chơi lại</button>
+          <button class="ghost-btn" id="backToSetupBtn" type="button">Về thiết lập</button>
+        </div>
+      </div>
+    </section>
+
+    <div aria-live="polite" class="toast" id="toast"></div>
+  </body>
+</html>
