@@ -520,7 +520,22 @@ a {
 .squad {
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  width: 206px;
+  justify-content: space-between;
+  gap: 0;
+  flex: 0 0 auto;
+}
+
+.squad .player:nth-child(1) {
+  margin-bottom: 2px;
+}
+
+.squad .player:nth-child(2) {
+  margin-bottom: 10px;
+}
+
+.squad .player:nth-child(3) {
+  margin-bottom: 4px;
 }
 
 .player {
@@ -535,6 +550,10 @@ a {
 
 .player.alt {
   animation-delay: -0.8s;
+}
+
+.player.lead {
+  z-index: 2;
 }
 
 .player.right {
@@ -567,6 +586,33 @@ a {
   border-radius: 18px 18px 10px 10px;
   background: #4b3027;
   z-index: 2;
+}
+
+.player.girl .player-hair {
+  top: 2px;
+  left: 16px;
+  width: 36px;
+  height: 20px;
+  border-radius: 18px 18px 14px 14px;
+}
+
+.player.girl .player-hair::before,
+.player.girl .player-hair::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  width: 10px;
+  height: 12px;
+  border-radius: 10px;
+  background: #4b3027;
+}
+
+.player.girl .player-hair::before {
+  left: 2px;
+}
+
+.player.girl .player-hair::after {
+  right: 2px;
 }
 
 .player-head {
@@ -602,6 +648,22 @@ a {
   border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
+.player.girl .player-body {
+  top: 34px;
+  left: 15px;
+  width: 34px;
+  height: 50px;
+  border-radius: 14px 14px 10px 10px;
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+}
+
+.player.girl .player-body::after {
+  left: 6px;
+  right: 6px;
+  top: 8px;
+  bottom: 10px;
+}
+
 .player-arm {
   top: 44px;
   left: 0;
@@ -622,6 +684,14 @@ a {
   background: var(--uniform-shadow);
 }
 
+.player.girl .player-arm {
+  top: 46px;
+}
+
+.player.girl .player-arm.back {
+  top: 55px;
+}
+
 .player-leg {
   top: 76px;
   left: 21px;
@@ -631,6 +701,10 @@ a {
   background: var(--uniform-main);
   transform-origin: top center;
   transform: rotate(11deg);
+}
+
+.player.girl .player-leg {
+  top: 82px;
 }
 
 .player-leg.back {
@@ -653,7 +727,7 @@ a {
 
 .rope-span {
   position: relative;
-  width: 214px;
+  width: 108px;
   height: 20px;
   margin-bottom: 54px;
 }
@@ -1052,6 +1126,10 @@ a {
     bottom: 78px;
     transform: translateX(calc(-50% + var(--pull-offset))) scale(0.82);
     transform-origin: center bottom;
+  }
+
+  .squad {
+    width: 184px;
   }
 }
 
